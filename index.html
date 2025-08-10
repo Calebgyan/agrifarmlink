@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AgriHire GH — Rent Farm Equipment</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgriHire GH</a>
+      <div class="ms-auto text-white small">Fast MVP • Deploy-ready</div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Post equipment / service</h5>
+            <form id="listingForm">
+              <div class="mb-2">
+                <label class="form-label">Title</label>
+                <input id="title" class="form-control" required maxlength="80" />
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Description</label>
+                <textarea id="description" class="form-control" rows="3" required></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-6 mb-2">
+                  <label class="form-label">Price (GHS / day)</label>
+                  <input id="price" class="form-control" type="number" min="0" step="0.01" required />
+                </div>
+                <div class="col-6 mb-2">
+                  <label class="form-label">Location</label>
+                  <input id="location" class="form-control" placeholder="e.g., Kumasi" />
+                </div>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Contact phone (WhatsApp)</label>
+                <input id="phone" class="form-control" placeholder="+233XXXXXXXXX" required />
+              </div>
+
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-success" type="submit" id="postBtn">Post listing</button>
+                <button class="btn btn-outline-secondary" type="button" id="clearBtn">Clear</button>
+                <div id="formMsg" class="text-success small ms-2"></div>
+              </div>
+            </form>
+            <hr />
+            <div class="small text-muted">
+              For demo only — enable Firestore and paste config into <code>firebase-config.js</code>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="d-flex mb-2 gap-2">
+          <input id="search" class="form-control" placeholder="Search by title, location, or price" />
+          <button class="btn btn-outline-primary" id="refreshBtn">Refresh</button>
+        </div>
+
+        <div id="listings" class="row row-cols-1 g-3"></div>
+
+        <div id="loading" class="text-center my-3" style="display:none;">
+          <div class="spinner-border text-success" role="status"><span class="visually-hidden">Loading...</span></div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-light py-3 mt-4">
+    <div class="container text-center small text-muted">
+      AgriHire GH • Built for the exam • <span id="timestamp"></span>
+    </div>
+  </footer>
+
+  <!-- Firebase SDKs and app JS -->
+  <!-- You will provide your firebase config in firebase-config.js (see example file) -->
+  <script src="firebase-config.js"></script>
+
+  <!-- Firebase (modular) CDN -->
+  <script type="module" src="app.js"></script>
+
+  <!-- Bootstrap JS (bundle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+:root{
+  --brand:#198754;
+}
+body{background:#f7f9f7}
+.card{border:0}
+.listing-card{border-left:4px solid var(--brand)}
+.small-muted{font-size:0.875rem}
+.btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+.phone-bubble{white-space:nowrap}
